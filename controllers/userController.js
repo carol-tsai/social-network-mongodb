@@ -23,7 +23,7 @@ module.exports = {
    },
 
    deleteUser(req, res) {
-      Student.findOneAndRemove({ _id: req.params.userId })
+      User.findOneAndRemove({ _id: req.params.userId })
          .then((user) =>
             !user
                ? res.status(404).json({ message: 'No such user exists' })
@@ -35,7 +35,7 @@ module.exports = {
          });
    },
    updateUser(req, res) {
-      Student.findOneAndUpdate(
+      User.findOneAndUpdate(
          {_id: req.params.userId },
          {$set: req.body },
          {runValidators: true, new: true })
@@ -50,7 +50,7 @@ module.exports = {
          });
    },
    addFriend(req, res) {
-      Student.findOneAndUpdate(
+      User.findOneAndUpdate(
          { _id: req.params.userId },
          {$addToSet: { friends: req.params.friendId } },
          {runValidators: true, new: true })
@@ -65,7 +65,7 @@ module.exports = {
          });
    },
    removeFriend(req, res) {
-      Student.findOneAndUpdate(
+      User.findOneAndUpdate(
          { _id: req.params.userId },
          { $pull: { friends: req.params.friendId } },
          { runValidators: true, new: true })
