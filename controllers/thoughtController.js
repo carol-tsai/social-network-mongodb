@@ -18,6 +18,13 @@ module.exports = {
    },
    createThought(req, res) {
       Thought.create(req.body)
+         .then((thought) => {
+            return User.findOneAndUpdate(
+               { _id: req.params.userId },
+               { $addToSet: { thoughts: thought._id } },
+               { runValidators: true, new: true });
+         }
+            )
          .then((dbThoughtData) => res.json(dbThoughtData))
          .catch((err) => res.status(500).json(err));
    },
