@@ -74,8 +74,8 @@ module.exports = {
    removeReaction(req, res) {
       Thought.findOneAndUpdate(
          { _id: req.params.thoughtId },
-         { $pull: { reactions: req.params.reactionId } },
-         { runValidators: true, new: true })
+         { $pull: { reactions: {reactionId: req.params.reactionId }} },
+         { new: true })
          .then((thought) =>
             !thought
                ? res.status(404).json({ message: 'No such user exists' })
