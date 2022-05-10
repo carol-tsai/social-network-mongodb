@@ -18,7 +18,11 @@
     npm install
 
   ## Usage
-  npm start
+  Run the following command to start the application.
+  
+    npm start
+
+  A video walkthrough of how to use the application can be found [here](https://drive.google.com/file/d/1ltivfRrSXR6pLKRwRVgXajiaMG3wVRXU/view?usp=sharing)
 
   ## License
   MIT License
